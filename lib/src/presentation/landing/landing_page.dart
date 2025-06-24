@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:portal/src/presentation/signin_page.dart';
-import 'package:portal/src/presentation/signup_page.dart';
+import 'package:portal/src/presentation/auth/signin_page.dart';
+import 'package:portal/src/presentation/auth/signup_page.dart';
 import 'package:portal/src/presentation/widgets/layouts/auth_page_layout.dart';
 import 'package:portal/src/presentation/widgets/responsive_spacer.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';

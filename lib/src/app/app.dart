@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:portal/src/presentation/landing_page.dart';
+import 'package:portal/src/presentation/landing/landing_page.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
 class App extends StatelessWidget {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:portal/src/presentation/otp_verification_page.dart';
+import 'package:portal/src/presentation/auth/otp_verification_page.dart';
 import 'package:portal/src/presentation/widgets/layouts/auth_page_layout.dart';
 import 'package:portal/src/presentation/widgets/responsive_spacer.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';

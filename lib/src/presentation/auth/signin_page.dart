@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:portal/src/presentation/forget_password_page.dart';
+import 'package:portal/src/presentation/auth/forget_password_page.dart';
+import 'package:portal/src/presentation/navigation/navigation_page.dart';
 import 'package:portal/src/presentation/widgets/layouts/auth_page_layout.dart';
 import 'package:portal/src/presentation/widgets/password_input.dart';
 import 'package:portal/src/presentation/widgets/responsive_spacer.dart';
@@ -61,6 +62,13 @@ class _SignInPageState extends State<SignInPage> {
             } else {
               print('validation failed');
             }
+
+            Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (context) => const NavigationPage()),
+              (Route<dynamic> route) =>
+                  false, // This predicate always returns false, removing all routes
+            );
           },
         ),
         const SizedBox(height: 15),
