@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:portal/src/presentation/auth/signin_page.dart';
-import 'package:portal/src/presentation/auth/signup_page.dart';
-import 'package:portal/src/presentation/widgets/layouts/auth_page_layout.dart';
-import 'package:portal/src/presentation/widgets/responsive_spacer.dart';
+import 'package:portal/src/presentation/auth/presentation/signin_page.dart';
+import 'package:portal/src/presentation/auth/presentation/signup_page.dart';
+import 'package:portal/src/presentation/widgets/layouts/auth_layout.dart';
+import 'package:portal/src/presentation/auth/presentation/widgets/responsive_spacer.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
 class LandingPage extends StatelessWidget {
@@ -11,7 +11,7 @@ class LandingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: AuthPageLayout(
+      child: AuthLayout(
         children: [
           ResponsiveSpacer(),
           Text('Welcome', style: ShadTheme.of(context).textTheme.h1Large),

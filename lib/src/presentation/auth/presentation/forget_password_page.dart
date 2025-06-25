@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:portal/src/presentation/widgets/layouts/auth_page_layout.dart';
-import 'package:portal/src/presentation/widgets/password_input.dart';
-import 'package:portal/src/presentation/widgets/responsive_spacer.dart';
+import 'package:portal/src/presentation/auth/presentation/otp_verification_page.dart';
+import 'package:portal/src/presentation/widgets/layouts/auth_layout.dart';
+import 'package:portal/src/presentation/auth/presentation/widgets/responsive_spacer.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
-class SignUpPage extends StatefulWidget {
-  const SignUpPage({super.key});
+class ForgetPasswordPage extends StatefulWidget {
+  const ForgetPasswordPage({super.key});
 
   @override
-  State<SignUpPage> createState() => _SignUpPageState();
+  State<ForgetPasswordPage> createState() => _ForgetPasswordPageState();
 }
 
-class _SignUpPageState extends State<SignUpPage> {
+class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
   final formKey = GlobalKey<ShadFormState>();
 
   @override
   Widget build(BuildContext context) {
-    return AuthPageLayout(
-      title: 'Sign Up',
+    return AuthLayout(
+      title: 'Forget Password',
       formKey: formKey,
       children: [
         ShadInputFormField(
@@ -32,28 +32,22 @@ class _SignUpPageState extends State<SignUpPage> {
             return null;
           },
         ),
-        const SizedBox(height: 15),
-        PasswordInput(
-          id: 'password',
-          label: const Text('Password'),
-          placeholder: const Text('Enter your password'),
-        ),
-        const SizedBox(height: 15),
-        PasswordInput(
-          id: 'confirm-password',
-          label: const Text('Confirm Password'),
-          placeholder: const Text('Enter your password'),
-        ),
         ResponsiveSpacer(),
         ShadButton(
           width: double.infinity,
-          child: const Text('Sign Up'),
+          child: const Text('Forget Password'),
           onPressed: () {
             if (formKey.currentState!.saveAndValidate()) {
               print('validation succeeded with ${formKey.currentState!.value}');
             } else {
               print('validation failed');
             }
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const OTPVerificationPage(),
+              ),
+            );
           },
         ),
         const SizedBox(height: 15),

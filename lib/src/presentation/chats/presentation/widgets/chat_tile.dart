@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:portal/src/presentation/chats/chats_page.dart';
-import 'package:portal/src/presentation/chats/individual_chat_page.dart';
-import 'package:portal/src/presentation/chats/widgets/dummy_user_data.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:portal/src/presentation/chats/data/user_model.dart';
+import 'package:portal/src/presentation/chats/presentation/individual_chat_page.dart';
+import 'package:portal/src/presentation/chats/providers/selected_user_provider.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
 class ChatTile extends ConsumerWidget {
-  final User user;
+  final UserModel user;
 
   const ChatTile({super.key, required this.user});
 

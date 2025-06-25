@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:portal/src/presentation/auth/reset_password_page.dart';
-import 'package:portal/src/presentation/widgets/layouts/auth_page_layout.dart';
-import 'package:portal/src/presentation/widgets/responsive_spacer.dart';
+import 'package:portal/src/presentation/auth/presentation/reset_password_page.dart';
+import 'package:portal/src/presentation/widgets/layouts/auth_layout.dart';
+import 'package:portal/src/presentation/auth/presentation/widgets/responsive_spacer.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
 class OTPVerificationPage extends StatefulWidget {
@@ -16,7 +16,7 @@ class _OTPVerificationPageState extends State<OTPVerificationPage> {
 
   @override
   Widget build(BuildContext context) {
-    return AuthPageLayout(
+    return AuthLayout(
       title: 'OTP Verification',
       formKey: formKey,
       children: [

@@ -1,25 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:portal/src/presentation/auth/forget_password_page.dart';
-import 'package:portal/src/presentation/navigation/navigation_page.dart';
-import 'package:portal/src/presentation/widgets/layouts/auth_page_layout.dart';
-import 'package:portal/src/presentation/widgets/password_input.dart';
-import 'package:portal/src/presentation/widgets/responsive_spacer.dart';
+import 'package:portal/src/presentation/widgets/layouts/auth_layout.dart';
+import 'package:portal/src/presentation/auth/presentation/widgets/password_input.dart';
+import 'package:portal/src/presentation/auth/presentation/widgets/responsive_spacer.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
-class SignInPage extends StatefulWidget {
-  const SignInPage({super.key});
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({super.key});
 
   @override
-  State<SignInPage> createState() => _SignInPageState();
+  State<SignUpPage> createState() => _SignUpPageState();
 }
 
-class _SignInPageState extends State<SignInPage> {
+class _SignUpPageState extends State<SignUpPage> {
   final formKey = GlobalKey<ShadFormState>();
 
   @override
   Widget build(BuildContext context) {
-    return AuthPageLayout(
-      title: 'Sign In',
+    return AuthLayout(
+      title: 'Sign Up',
       formKey: formKey,
       children: [
         ShadInputFormField(
@@ -41,34 +39,21 @@ class _SignInPageState extends State<SignInPage> {
           placeholder: const Text('Enter your password'),
         ),
         const SizedBox(height: 15),
-        ShadButton.link(
-          child: const Text('Forget Password?'),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const ForgetPasswordPage(),
-              ),
-            );
-          },
+        PasswordInput(
+          id: 'confirm-password',
+          label: const Text('Confirm Password'),
+          placeholder: const Text('Enter your password'),
         ),
         ResponsiveSpacer(),
         ShadButton(
           width: double.infinity,
-          child: const Text('Sign In'),
+          child: const Text('Sign Up'),
           onPressed: () {
             if (formKey.currentState!.saveAndValidate()) {
               print('validation succeeded with ${formKey.currentState!.value}');
             } else {
               print('validation failed');
             }
-
-            Navigator.pushAndRemoveUntil(
-              context,
-              MaterialPageRoute(builder: (context) => const NavigationPage()),
-              (Route<dynamic> route) =>
-                  false, // This predicate always returns false, removing all routes
-            );
           },
         ),
         const SizedBox(height: 15),

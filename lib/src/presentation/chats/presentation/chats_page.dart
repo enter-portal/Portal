@@ -1,22 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:portal/src/presentation/chats/chat_list_page.dart';
-import 'package:portal/src/presentation/chats/individual_chat_page.dart';
-import 'package:portal/src/presentation/chats/widgets/dummy_user_data.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:portal/src/presentation/chats/presentation/chat_list_page.dart';
+import 'package:portal/src/presentation/chats/presentation/individual_chat_page.dart';
+import 'package:portal/src/presentation/chats/providers/selected_user_provider.dart';
 import 'package:portal/src/presentation/widgets/layouts/responsive_layout.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
-
-class SelectedUserNotifier extends StateNotifier<User?> {
-  SelectedUserNotifier() : super(null); // Initial index is 0
-
-  void setUser(User? user) {
-    state = user;
-  }
-}
-
-final selectedUserProvider = StateNotifierProvider<SelectedUserNotifier, User?>(
-  (ref) => SelectedUserNotifier(),
-);
 
 class ChatsPage extends ConsumerWidget {
   const ChatsPage({super.key});

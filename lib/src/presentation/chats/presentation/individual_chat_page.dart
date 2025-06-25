@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:portal/src/presentation/chats/widgets/dummy_user_data.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:portal/src/presentation/chats/data/user_model.dart';
+
 import 'package:shadcn_ui/shadcn_ui.dart';
 
 class IndividualChatPage extends ConsumerWidget {
-  final User? user;
+  final UserModel? user;
   const IndividualChatPage({super.key, this.user});
 
   @override
@@ -34,7 +35,6 @@ class IndividualChatPage extends ConsumerWidget {
         ),
       );
     }
-
     return Scaffold(
       appBar: AppBar(
         title: Text(user!.name, style: theme.textTheme.h4),

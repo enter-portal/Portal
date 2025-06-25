@@ -3,8 +3,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
-class AuthPageLayout extends StatelessWidget {
-  const AuthPageLayout({
+class AuthLayout extends StatelessWidget {
+  const AuthLayout({
     super.key,
     this.formKey,
     this.title,

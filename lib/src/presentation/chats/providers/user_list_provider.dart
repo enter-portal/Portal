@@ -1,41 +1,5 @@
-// Define a simple User class to structure the data
-class User {
-  final String name;
-  final String lastMessage;
-  final String time;
-  final String avatarUrl;
-  final int unreadCount;
-
-  User({
-    required this.name,
-    required this.lastMessage,
-    required this.time,
-    required this.avatarUrl,
-    required this.unreadCount,
-  });
-
-  // Optional: A factory constructor to create a User from a Map
-  factory User.fromMap(Map<String, dynamic> map) {
-    return User(
-      name: map["name"] as String,
-      lastMessage: map["lastMessage"] as String,
-      time: map["time"] as String,
-      avatarUrl: map["avatarUrl"] as String,
-      unreadCount: map["unreadCount"] as int,
-    );
-  }
-
-  // Optional: Convert User object to a Map
-  Map<String, dynamic> toMap() {
-    return {
-      "name": name,
-      "lastMessage": lastMessage,
-      "time": time,
-      "avatarUrl": avatarUrl,
-      "unreadCount": unreadCount,
-    };
-  }
-}
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:portal/src/presentation/chats/data/user_model.dart';
 
 final List<String> names = [
   "Alice Johnson",
@@ -106,15 +70,15 @@ final List<String> times = [
   "Friday",
 ];
 
-List<User> getUsers() {
-  List<User> users = [];
+final userListProvider = Provider<List<UserModel>>((ref) {
+  final List<UserModel> users = [];
 
   for (int i = 0; i < names.length; i++) {
     final name = names[i];
     // final avatarUrl = "https://api.dicebear.com/9.x/lorelei/png?flip=false&seed=$name";
     final avatarUrl = "https://api.dicebear.com/9.x/pixel-art/png?seed=$name";
     users.add(
-      User(
+      UserModel(
         name: name,
         lastMessage: messages[i],
         time: times[i],
@@ -125,4 +89,4 @@ List<User> getUsers() {
   }
 
   return users;
-}
+});

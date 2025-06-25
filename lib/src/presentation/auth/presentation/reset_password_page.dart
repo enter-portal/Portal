@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:portal/src/presentation/widgets/layouts/auth_page_layout.dart';
-import 'package:portal/src/presentation/widgets/password_input.dart';
-import 'package:portal/src/presentation/widgets/responsive_spacer.dart';
+import 'package:portal/src/presentation/widgets/layouts/auth_layout.dart';
+import 'package:portal/src/presentation/auth/presentation/widgets/password_input.dart';
+import 'package:portal/src/presentation/auth/presentation/widgets/responsive_spacer.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 import 'dart:io';
 
@@ -17,7 +17,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
 
   @override
   Widget build(BuildContext context) {
-    return AuthPageLayout(
+    return AuthLayout(
       title: 'Reset Password',
       leading: IconButton(
         icon: Icon(
