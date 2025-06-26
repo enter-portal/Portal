@@ -37,8 +37,9 @@ dependencies:
   shadcn_ui: ^0.27.3
   hooks_riverpod: ^2.6.1
   flutter_hooks: ^0.21.2
-  dynamic_color: ^1.7.0
- 
+  dynamic_system_colors: ^1.8.0
+  flex_seed_scheme: ^3.5.1
+  emoji_picker_flutter: ^4.3.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

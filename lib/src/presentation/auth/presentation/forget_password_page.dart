@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:portal/src/app/config/routes.dart';
 import 'package:portal/src/presentation/auth/presentation/otp_verification_page.dart';
 import 'package:portal/src/presentation/widgets/layouts/auth_layout.dart';
 import 'package:portal/src/presentation/auth/presentation/widgets/responsive_spacer.dart';
+import 'package:portal/src/presentation/widgets/portal_icon_button.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
 class ForgetPasswordPage extends StatefulWidget {
@@ -23,9 +25,8 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
         ShadInputFormField(
           id: 'email',
           label: const Text('Email'),
-          leading: const Padding(
-            padding: EdgeInsets.all(4.0),
-            child: Icon(LucideIcons.mail),
+          leading: const PortalIconButton(
+            icon: Icon(LucideIcons.mail, size: 25),
           ),
           placeholder: const Text('Enter your email'),
           validator: (v) {
@@ -42,10 +43,15 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
             } else {
               print('validation failed');
             }
+
+            // If the screen width is small, navigate to the individual chat page
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => const OTPVerificationPage(),
+                builder:
+                    (context) => OTPVerificationPage(
+                      previousPage: AppRoutes.forgetPassword,
+                    ),
               ),
             );
           },

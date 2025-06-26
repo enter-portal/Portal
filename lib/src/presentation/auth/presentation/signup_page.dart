@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:portal/src/app/config/routes.dart';
+import 'package:portal/src/presentation/auth/presentation/otp_verification_page.dart';
 import 'package:portal/src/presentation/widgets/layouts/auth_layout.dart';
 import 'package:portal/src/presentation/auth/presentation/widgets/password_input.dart';
 import 'package:portal/src/presentation/auth/presentation/widgets/responsive_spacer.dart';
+import 'package:portal/src/presentation/widgets/portal_icon_button.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -23,9 +26,8 @@ class _SignUpPageState extends State<SignUpPage> {
         ShadInputFormField(
           id: 'email',
           label: const Text('Email'),
-          leading: const Padding(
-            padding: EdgeInsets.all(4.0),
-            child: Icon(LucideIcons.mail),
+          leading: const PortalIconButton(
+            icon: Icon(LucideIcons.mail, size: 25),
           ),
           placeholder: const Text('Enter your email'),
           validator: (v) {
@@ -54,6 +56,15 @@ class _SignUpPageState extends State<SignUpPage> {
             } else {
               print('validation failed');
             }
+            // If the screen width is small, navigate to the individual chat page
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder:
+                    (context) =>
+                        OTPVerificationPage(previousPage: AppRoutes.signUp),
+              ),
+            );
           },
         ),
         const SizedBox(height: 15),

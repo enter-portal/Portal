@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portal/src/presentation/widgets/portal_icon_button.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
 class NavRail extends StatelessWidget {
@@ -18,14 +19,6 @@ class NavRail extends StatelessWidget {
         context,
       ).colorScheme.inversePrimary.withValues(alpha: 0.5),
       labelType: NavigationRailLabelType.all,
-      leading: Padding(
-        padding: const EdgeInsets.only(bottom: 24.0),
-        child: Icon(
-          LucideIcons.circleUser,
-          size: 38.0,
-          color: Theme.of(context).colorScheme.primary,
-        ),
-      ),
       destinations: const [
         NavigationRailDestination(
           icon: Icon(LucideIcons.messageCircleMore),
@@ -42,6 +35,18 @@ class NavRail extends StatelessWidget {
       ],
       selectedIndex: selectedPageIndex,
       onDestinationSelected: onDestinationSelected,
+      trailing: Expanded(
+        child: Align(
+          alignment: Alignment.bottomCenter,
+          child: Padding(
+            padding: const EdgeInsets.only(bottom: 24.0),
+            child: PortalIconButton(
+              onTap: () {},
+              icon: const Icon(LucideIcons.settings, size: 22),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:portal/src/presentation/auth/presentation/signin_page.dart';
-import 'package:portal/src/presentation/auth/presentation/signup_page.dart';
+import 'package:portal/src/app/config/routes.dart';
 import 'package:portal/src/presentation/widgets/layouts/auth_layout.dart';
 import 'package:portal/src/presentation/auth/presentation/widgets/responsive_spacer.dart';
+import 'package:portal/src/presentation/widgets/portal_animated_logo.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
 class LandingPage extends StatelessWidget {
@@ -16,7 +16,7 @@ class LandingPage extends StatelessWidget {
           ResponsiveSpacer(),
           Text('Welcome', style: ShadTheme.of(context).textTheme.h1Large),
           ResponsiveSpacer(),
-          UniversalImage('assets/images/svg/portal_1.svg', height: 400),
+          PortalAnimatedLogo(dimension: 400),
           ResponsiveSpacer(),
           Text(
             'Your portal to the privacy',
@@ -32,10 +32,7 @@ class LandingPage extends StatelessWidget {
             width: double.infinity,
             child: const Text('New to Portal'),
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const SignUpPage()),
-              );
+              Navigator.pushNamed(context, AppRoutes.signUp.name);
             },
           ),
           const SizedBox(height: 10),
@@ -43,10 +40,7 @@ class LandingPage extends StatelessWidget {
             width: double.infinity,
             child: const Text('Existing User'),
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const SignInPage()),
-              );
+              Navigator.pushNamed(context, AppRoutes.signIn.name);
             },
           ),
           const SizedBox(height: 15),

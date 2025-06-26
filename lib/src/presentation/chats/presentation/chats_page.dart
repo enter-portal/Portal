@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:portal/src/presentation/chats/presentation/chat_list_page.dart';
 import 'package:portal/src/presentation/chats/presentation/individual_chat_page.dart';
-import 'package:portal/src/presentation/chats/providers/selected_user_provider.dart';
+import 'package:portal/src/presentation/chats/presentation/providers/selected_user_provider.dart';
 import 'package:portal/src/presentation/widgets/layouts/responsive_layout.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
@@ -23,12 +23,11 @@ class ChatsPage extends ConsumerWidget {
   }
 
   Widget desktopChatPage(BuildContext context, WidgetRef ref) {
-    final theme = ShadTheme.of(context);
     final selectedUser = ref.watch(selectedUserProvider);
-
     return ClipRRect(
-      borderRadius: theme.radius,
       child: ShadResizablePanelGroup(
+        dividerSize: 0,
+        dividerColor: Colors.transparent,
         children: [
           ShadResizablePanel(
             id: 1,

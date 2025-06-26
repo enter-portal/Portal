@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:portal/src/app/config/routes.dart';
 import 'package:portal/src/presentation/widgets/layouts/auth_layout.dart';
 import 'package:portal/src/presentation/auth/presentation/widgets/password_input.dart';
 import 'package:portal/src/presentation/auth/presentation/widgets/responsive_spacer.dart';
+import 'package:portal/src/presentation/widgets/portal_icon_button.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 import 'dart:io';
 
@@ -34,9 +36,8 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
         ShadInputFormField(
           id: 're-enter-email',
           label: const Text('Email'),
-          leading: const Padding(
-            padding: EdgeInsets.all(4.0),
-            child: Icon(LucideIcons.mail),
+          leading: const PortalIconButton(
+            icon: Icon(LucideIcons.mail, size: 25),
           ),
           placeholder: const Text('Re-enter your email'),
           validator: (v) {
@@ -65,6 +66,12 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
             } else {
               print('validation failed');
             }
+
+            Navigator.pushNamedAndRemoveUntil(
+              context,
+              AppRoutes.home.name,
+              (route) => false,
+            );
           },
         ),
         const SizedBox(height: 15),

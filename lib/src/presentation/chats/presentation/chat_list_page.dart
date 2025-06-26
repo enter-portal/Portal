@@ -1,10 +1,12 @@
-import 'package:flutter/material.dart' hide SearchBar;
+import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:portal/src/app/config/constants.dart';
 import 'package:portal/src/presentation/chats/presentation/widgets/chat_tile.dart';
-import 'package:portal/src/presentation/chats/presentation/widgets/menu.dart';
+import 'package:portal/src/presentation/chats/presentation/widgets/chat_popup_menu.dart';
 import 'package:portal/src/presentation/chats/presentation/widgets/search_bar.dart';
-import 'package:portal/src/presentation/chats/providers/filtred_user_list_provider.dart';
-import 'package:portal/src/presentation/chats/providers/search_bar_provider.dart';
+import 'package:portal/src/presentation/chats/presentation/providers/filtred_user_list_provider.dart';
+import 'package:portal/src/presentation/chats/presentation/providers/search_bar_provider.dart';
+import 'package:portal/src/presentation/widgets/portal_icon_button.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
 class ChatListPage extends ConsumerWidget {
@@ -19,45 +21,50 @@ class ChatListPage extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Portal', style: theme.textTheme.h3),
+        title: Row(
+          children: [
+            ShadAvatar(
+              AppConstants.appLogo,
+              placeholder: Icon(LucideIcons.circleUserRound, size: 50),
+            ),
+            SizedBox(width: 10),
+            Text(AppConstants.appName, style: theme.textTheme.large),
+          ],
+        ),
         centerTitle: false,
         automaticallyImplyLeading: false,
-        //surfaceTintColor: Colors.transparent,
+        forceMaterialTransparency: true,
         actions: [
           !searchBarVisibility
-              ? ShadIconButton.ghost(
-                onPressed: () {
+              ? PortalIconButton(
+                icon: Icon(LucideIcons.search, size: 22),
+                onTap: () {
                   ref.read(searchBarVisibilityProvider.notifier).show();
                 },
-                icon: Icon(LucideIcons.search, size: 25),
               )
               : SizedBox.shrink(),
-          PopoverMenu(),
+          const ChatPopupMenu(),
         ],
         bottom:
             searchBarVisibility
                 ? PreferredSize(
                   preferredSize: const Size.fromHeight(kToolbarHeight),
-                  child: SearchBar(),
+                  child: PortalSearchBar(),
                 )
                 : null,
       ),
       body: ListView.separated(
-        padding: const EdgeInsets.all(8),
         itemCount: filteredUsers.length,
         itemBuilder: (BuildContext context, int index) {
-          // Render our item
           return ChatTile(user: filteredUsers[index]);
         },
-        separatorBuilder: (BuildContext context, int index) => const Divider(),
+        separatorBuilder:
+            (BuildContext context, int index) => const SizedBox.shrink(),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-      floatingActionButton: SizedBox.square(
-        dimension: 57,
-        child: ShadButton(
-          leading: const Icon(LucideIcons.messageCirclePlus, size: 25),
-          onPressed: () {},
-        ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: const Icon(LucideIcons.messageCirclePlus, size: 25),
       ),
     );
   }

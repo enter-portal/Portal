@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:portal/src/presentation/auth/presentation/forget_password_page.dart';
-import 'package:portal/src/presentation/navigation/presentation/navigation_page.dart';
+import 'package:portal/src/app/config/routes.dart';
 import 'package:portal/src/presentation/widgets/layouts/auth_layout.dart';
 import 'package:portal/src/presentation/auth/presentation/widgets/password_input.dart';
 import 'package:portal/src/presentation/auth/presentation/widgets/responsive_spacer.dart';
+import 'package:portal/src/presentation/widgets/portal_icon_button.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
 class SignInPage extends StatefulWidget {
@@ -25,9 +25,8 @@ class _SignInPageState extends State<SignInPage> {
         ShadInputFormField(
           id: 'email',
           label: const Text('Email'),
-          leading: const Padding(
-            padding: EdgeInsets.all(4.0),
-            child: Icon(LucideIcons.mail),
+          leading: const PortalIconButton(
+            icon: Icon(LucideIcons.mail, size: 25),
           ),
           placeholder: const Text('Enter your email'),
           validator: (v) {
@@ -44,12 +43,7 @@ class _SignInPageState extends State<SignInPage> {
         ShadButton.link(
           child: const Text('Forget Password?'),
           onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const ForgetPasswordPage(),
-              ),
-            );
+            Navigator.pushNamed(context, AppRoutes.forgetPassword.name);
           },
         ),
         ResponsiveSpacer(),
@@ -63,9 +57,9 @@ class _SignInPageState extends State<SignInPage> {
               print('validation failed');
             }
 
-            Navigator.pushAndRemoveUntil(
+            Navigator.pushNamedAndRemoveUntil(
               context,
-              MaterialPageRoute(builder: (context) => const NavigationPage()),
+              AppRoutes.navigation.name,
               (Route<dynamic> route) =>
                   false, // This predicate always returns false, removing all routes
             );

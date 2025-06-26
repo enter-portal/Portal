@@ -1,6 +1,6 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:portal/src/presentation/chats/data/user_model.dart';
-import 'package:portal/src/presentation/chats/providers/user_list_provider.dart';
+import 'package:portal/src/presentation/chats/presentation/providers/user_list_provider.dart';
 
 final searchQueryProvider = StateProvider<String>((ref) => '');
 

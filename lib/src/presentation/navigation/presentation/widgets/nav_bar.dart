@@ -27,6 +27,7 @@ class NavBar extends StatelessWidget {
       ],
       selectedIndex: selectedPageIndex,
       onDestinationSelected: onDestinationSelected,
+      labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
     );
   }
 }
