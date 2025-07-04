@@ -1,43 +1,25 @@
 import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
-import 'package:portal/src/app/config/constants.dart';
 
 class PortalLogo extends StatelessWidget {
   final Color primary;
-  final Color secondary;
-  final Color tertiary;
 
-  const PortalLogo({
-    super.key,
-    this.primary = AppConstants.primary,
-    this.secondary = AppConstants.secondary,
-    this.tertiary = AppConstants.tertiary,
-  });
+  const PortalLogo({super.key, required this.primary});
 
   @override
   Widget build(BuildContext context) {
     // Add this CustomPaint widget to the widget tree
-    return CustomPaint(
-      painter: _RPSCustomPainter(
-        primary: primary,
-        secondary: secondary,
-        tertiary: tertiary,
-      ),
-    );
+    return CustomPaint(painter: _RPSCustomPainter(primaryColor: primary));
   }
 }
 
 // SVG to CustomPainter: https://fluttershapemaker.com/#/
 class _RPSCustomPainter extends CustomPainter {
-  final Color primary;
-  final Color secondary;
-  final Color tertiary;
+  final Color primaryColor;
+  final Color secondaryColor = Color(0xffF6D2B7);
+  final Color tertiaryColor = Color(0xff102E4A);
 
-  _RPSCustomPainter({
-    this.primary = AppConstants.primary,
-    this.secondary = AppConstants.secondary,
-    this.tertiary = AppConstants.tertiary,
-  });
+  _RPSCustomPainter({required this.primaryColor});
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -45,10 +27,11 @@ class _RPSCustomPainter extends CustomPainter {
         Paint()
           ..style = PaintingStyle.stroke
           ..strokeWidth = size.width * 0.01000000;
+
     paint0Stroke.shader = ui.Gradient.radial(
       Offset(size.width * 0.5000000, size.height * 0.5000000),
       size.width * 0.5000000,
-      [primary.withAlpha((0.8 * 255).round()), secondary.withAlpha(0)],
+      [tertiaryColor.withAlpha(204), secondaryColor.withAlpha(0)],
       [0, 1],
     );
     canvas.drawCircle(
@@ -64,7 +47,7 @@ class _RPSCustomPainter extends CustomPainter {
     paint1Stroke.shader = ui.Gradient.linear(
       Offset(0, 0),
       Offset(size.width, size.height),
-      [secondary.withAlpha(255), primary.withAlpha(255)],
+      [secondaryColor.withAlpha(255), tertiaryColor.withAlpha(255)],
       [0, 1],
     );
     canvas.drawCircle(
@@ -80,7 +63,7 @@ class _RPSCustomPainter extends CustomPainter {
     paint2Stroke.shader = ui.Gradient.linear(
       Offset(0, 0),
       Offset(size.width, size.height),
-      [secondary.withAlpha(255), primary.withAlpha(255)],
+      [secondaryColor.withAlpha(255), tertiaryColor.withAlpha(255)],
       [0, 1],
     );
     canvas.drawCircle(
@@ -97,9 +80,9 @@ class _RPSCustomPainter extends CustomPainter {
       Offset(0, 0),
       Offset(size.width, size.height),
       [
-        secondary.withAlpha(255),
-        tertiary.withAlpha(255),
-        primary.withAlpha(255),
+        secondaryColor.withAlpha(255),
+        primaryColor.withAlpha(255),
+        tertiaryColor.withAlpha(255),
       ],
       [0, 0.5, 1],
     );

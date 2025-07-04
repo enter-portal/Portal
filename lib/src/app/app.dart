@@ -1,5 +1,4 @@
 import 'package:dynamic_system_colors/dynamic_system_colors.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:portal/src/app/config/constants.dart';
 import 'package:portal/src/app/config/routes.dart';
@@ -18,14 +17,10 @@ class App extends StatelessWidget {
       ) {
         // Get the actual color schemes to use
         final lightColorScheme =
-            defaultTargetPlatform == TargetPlatform.linux
-                ? AppTheme.defaultLightColorScheme
-                : lightDynamicColorScheme ?? AppTheme.defaultLightColorScheme;
+            lightDynamicColorScheme ?? AppTheme.defaultLightColorScheme;
 
         final darkColorScheme =
-            defaultTargetPlatform == TargetPlatform.linux
-                ? AppTheme.defaultDarkColorScheme
-                : darkDynamicColorScheme ?? AppTheme.defaultDarkColorScheme;
+            darkDynamicColorScheme ?? AppTheme.defaultDarkColorScheme;
 
         return ShadApp.custom(
           // Apply light dynamic colors to Shadcn UI

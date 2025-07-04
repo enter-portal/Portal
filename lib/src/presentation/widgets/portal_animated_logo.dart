@@ -31,11 +31,7 @@ class PortalAnimatedLogo extends StatelessWidget {
       rotating: rotating,
       child: SizedBox.square(
         dimension: dimension,
-        child: PortalLogo(
-          primary: Theme.of(context).primaryColor,
-          secondary: Theme.of(context).colorScheme.secondary,
-          tertiary: Theme.of(context).colorScheme.tertiary,
-        ),
+        child: PortalLogo(primary: Theme.of(context).colorScheme.primary),
       ),
     );
   }
