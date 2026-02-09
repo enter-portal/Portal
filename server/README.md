@@ -62,4 +62,4 @@ Application configuration can be found in `src/main/resources/application.proper
 
 ## License
 
-See [LICENSE](../LICENSE) for details.
+See [LICENSE](../LICENSE.md) for details.

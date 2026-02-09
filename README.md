@@ -12,4 +12,4 @@ We welcome contributions! Please open an issue or submit a pull request.
 
 ### License
 
-Portal is licensed under the [BSD-4-Clause](https://en.wikipedia.org/wiki/BSD_licenses) License. See [`LICENSE`](./LICENSE) for more information.
+Portal is licensed under the [BSD-4-Clause](https://en.wikipedia.org/wiki/BSD_licenses) License. See [`LICENSE`](./LICENSE.md) for more information.
