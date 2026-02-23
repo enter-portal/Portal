@@ -42,6 +42,7 @@ class ChatPopupMenu extends HookConsumerWidget {
         ),
       ],
       offset: Offset(0, 40),
+
       child: const Padding(
         padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 20.0),
         child: Icon(LucideIcons.ellipsisVertical, size: 22),

@@ -85,31 +85,24 @@ class ChatListScreen extends ConsumerWidget {
       );
     }
 
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(24, 20, 16, 8),
-      child: Row(
-        children: [
-          Text(
-            AppConfigs.appName,
-            style: theme.textTheme.h3.copyWith(
-              fontWeight: FontWeight.w800,
-              letterSpacing: -0.5,
-            ),
-          ),
-          const Spacer(),
-          ShadButton.ghost(
-            width: 44,
-            height: 44,
-            padding: EdgeInsets.zero,
-            hoverBackgroundColor: Colors.transparent,
-            onPressed: () =>
-                ref.read(searchBarVisibilityProvider.notifier).show(),
-            child: const Icon(LucideIcons.search, size: 22),
-          ),
-          const SizedBox(width: 4),
-          const ChatPopupMenu(),
-        ],
-      ),
+    return AppBar(
+      title: const Text(AppConfigs.appName),
+      automaticallyImplyLeading: false,
+      backgroundColor: Colors.transparent,
+      scrolledUnderElevation: 0,
+      elevation: 0,
+      actions: [
+        ShadButton.ghost(
+          width: 44,
+          height: 44,
+          padding: EdgeInsets.zero,
+          hoverBackgroundColor: Colors.transparent,
+          onPressed: () =>
+              ref.read(searchBarVisibilityProvider.notifier).show(),
+          child: const Icon(LucideIcons.search, size: 22),
+        ),
+        const ChatPopupMenu(),
+      ],
     );
   }
 

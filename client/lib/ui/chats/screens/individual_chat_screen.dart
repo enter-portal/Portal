@@ -46,35 +46,37 @@ class IndividualChatScreen extends ConsumerWidget {
     return Scaffold(
       backgroundColor: theme.colorScheme.background,
       appBar: _buildAppBar(context, theme),
-      body: Column(
-        children: [
-          Expanded(
-            child: asyncMessages.when(
-              loading: () => const Center(child: CircularProgressIndicator()),
-              error: (err, _) => _buildError(theme),
-              data: (messages) {
-                return ListView.builder(
-                  reverse: true,
-                  padding: const EdgeInsets.symmetric(vertical: 20),
-                  itemCount: messages.length,
-                  itemBuilder: (_, i) {
-                    final msg = messages[messages.length - 1 - i];
-                    return ChatTextBubble(
-                      isMe: msg.sender == 'Bob',
-                      text: msg.message,
-                      time: '12:00 PM', // Placeholder for now
-                    );
-                  },
-                );
-              },
+      body: SafeArea(
+        child: Column(
+          children: [
+            Expanded(
+              child: asyncMessages.when(
+                loading: () => const Center(child: CircularProgressIndicator()),
+                error: (err, _) => _buildError(theme),
+                data: (messages) {
+                  return ListView.builder(
+                    reverse: true,
+                    padding: const EdgeInsets.symmetric(vertical: 20),
+                    itemCount: messages.length,
+                    itemBuilder: (_, i) {
+                      final msg = messages[messages.length - 1 - i];
+                      return ChatTextBubble(
+                        isMe: msg.sender == 'Bob',
+                        text: msg.message,
+                        time: '12:00 PM', // Placeholder for now
+                      );
+                    },
+                  );
+                },
+              ),
             ),
-          ),
-          ChatInputBox(
-            onSend: (text) => ref
-                .read(messageViewModelProvider.notifier)
-                .sendMessage(text, 'Bob', user!.name),
-          ),
-        ],
+            ChatInputBox(
+              onSend: (text) => ref
+                  .read(messageViewModelProvider.notifier)
+                  .sendMessage(text, 'Bob', user!.name),
+            ),
+          ],
+        ),
       ),
     );
   }

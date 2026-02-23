@@ -31,15 +31,10 @@ class ChatInputBox extends HookConsumerWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Container(
-          margin: const EdgeInsets.only(
-            left: 16,
-            right: 16,
-            bottom: 24,
-            top: 8,
-          ),
+          margin: const EdgeInsets.only(left: 8, right: 8, bottom: 8, top: 8),
           padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
           decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.surfaceContainerLow,
+            color: Theme.of(context).colorScheme.secondaryContainer,
             borderRadius: BorderRadius.circular(32),
           ),
           child: Row(
