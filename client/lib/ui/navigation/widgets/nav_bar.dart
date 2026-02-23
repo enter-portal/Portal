@@ -19,11 +19,11 @@ class NavBar extends StatelessWidget {
           icon: Icon(LucideIcons.messageCircleMore),
           label: 'Chats',
         ),
-        NavigationDestination(
-          icon: Icon(LucideIcons.galleryHorizontalEnd),
-          label: 'Stories',
-        ),
-        NavigationDestination(icon: Icon(LucideIcons.phone), label: 'Calls'),
+        // NavigationDestination(
+        //   icon: Icon(LucideIcons.galleryHorizontalEnd),
+        //   label: 'Stories',
+        // ),
+        // NavigationDestination(icon: Icon(LucideIcons.phone), label: 'Calls'),
       ],
       selectedIndex: selectedPageIndex,
       onDestinationSelected: onDestinationSelected,

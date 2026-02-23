@@ -22,14 +22,14 @@ class NavRail extends StatelessWidget {
           icon: Icon(LucideIcons.messageCircleMore),
           label: Text('Chats'),
         ),
-        NavigationRailDestination(
-          icon: Icon(LucideIcons.galleryHorizontalEnd),
-          label: Text('Stories'),
-        ),
-        NavigationRailDestination(
-          icon: Icon(LucideIcons.phone),
-          label: Text('Calls'),
-        ),
+        // NavigationRailDestination(
+        //   icon: Icon(LucideIcons.galleryHorizontalEnd),
+        //   label: Text('Stories'),
+        // ),
+        // NavigationRailDestination(
+        //   icon: Icon(LucideIcons.phone),
+        //   label: Text('Calls'),
+        // ),
       ],
       selectedIndex: selectedPageIndex,
       onDestinationSelected: onDestinationSelected,
