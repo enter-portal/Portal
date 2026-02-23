@@ -1,0 +1,14 @@
+spotless {
+    java {
+        googleJavaFormat("${googleJavaFormatVersion}").aosp()
+        importOrder('java', 'javax', 'jakarta', 'org.springframework', 'org', 'com', '')
+        removeUnusedImports()
+        target 'src/**/java/**/*.java'
+    }
+
+    groovyGradle {
+        greclipse()
+    }
+}
+
+check.dependsOn 'spotlessCheck'

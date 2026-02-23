@@ -1,0 +1,68 @@
+# Default recipe - show help
+default:
+    @just --list
+
+# Performance: build with build cache and parallel execution
+build-quick:
+    @echo "⚡ Quick build with cache and parallel execution..."
+    ./gradlew build -x test --build-cache --parallel
+    @echo "✅ Quick build complete!"
+
+# Quick build (skip tests) - for fast development iteration
+build:
+    @echo "🔨 Building project (skipping tests)..."
+    ./gradlew clean build -x test
+    @echo "✅ Build complete!"
+
+# Release build (with tests) - for production
+release:
+    @echo "📦 Creating release build..."
+    ./gradlew clean build
+    @echo "✅ Release build complete!"
+    @ls -lh build/libs/*.jar
+
+# Run all tests
+test:
+    @echo "🧪 Running tests..."
+    ./gradlew test
+    @echo "✅ Tests complete!"
+
+# Run tests with coverage report
+coverage:
+    @echo "🧪 Running tests with coverage..."
+    ./gradlew coverage
+    @echo "✅ Coverage complete!"
+    @echo "📊 Coverage report: build/reports/jacoco/test/html/index.html"
+
+# Generate Javadocs
+docs:
+    @echo "📚 Generating Javadocs..."
+    ./gradlew docs
+    @echo "✅ Javadocs generated: build/docs/javadoc/index.html"
+
+# Clean build artifacts
+clean:
+    @echo "🧹 Cleaning build artifacts..."
+    ./gradlew clean
+    rm -rf build/
+    @echo "✅ Clean complete!"
+
+# Deep clean - remove all generated files
+deep-clean: clean
+    @echo "🧹 Deep cleaning..."
+    rm -rf .gradle/
+    rm -rf .mvn/
+    find . -name "*.log" -type f -delete
+    @echo "✅ Deep clean complete!"
+
+# Show dependency tree
+deps:
+    @echo "🌳 Dependency tree:"
+    ./gradlew dependencies
+
+# Format code (if using Spotless)
+format:
+    @echo "💅 Formatting code..."
+    ./gradlew spotlessApply
+
+# TODO: Security vulnerability check

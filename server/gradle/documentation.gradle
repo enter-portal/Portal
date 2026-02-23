@@ -1,0 +1,39 @@
+// Javadoc Configuration
+javadoc {
+    options.encoding = 'UTF-8'
+    options.charSet = 'UTF-8'
+    options.author = true
+    options.version = true
+
+    // Add links to Java and Spring documentation
+    options.links(
+            "https://docs.oracle.com/en/java/javase/${javaVersion}/docs/api/",
+            "https://docs.spring.io/spring-framework/docs/current/javadoc-api/",
+            "https://jakarta.ee/specifications/platform/9/apidocs/"
+    )
+
+    // Suppress missing comment warnings (common with Lombok)
+    options.addStringOption('Xdoclint:all,-missing', '-quiet')
+
+    // Skip generated code
+    exclude '**/generated/**'
+
+    // Skip test utilities
+    exclude '**/test/util/**'
+
+    // Custom options
+    options.windowTitle = "${project.name} ${project.version} API"
+    options.docTitle = "${project.name} API Documentation"
+    options.header = project.name
+}
+
+// Generate docs in HTML
+tasks.register('docs') {
+    dependsOn javadoc
+    description = 'Generate all documentation'
+    group = 'documentation'
+
+    doLast {
+        println "Documentation generated at: ${javadoc.destinationDir}/index.html"
+    }
+}

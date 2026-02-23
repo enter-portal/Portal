@@ -1,0 +1,49 @@
+// Test Configuration
+tasks.named('test') {
+    useJUnitPlatform()
+
+    // Show test output
+    testLogging {
+        events "passed", "skipped", "failed"
+        exceptionFormat = "full"
+        showStandardStreams = false
+    }
+
+    // Test reports
+    reports {
+        html.required = true
+    }
+
+    // Fail fast
+    failFast = false
+
+    // Parallel execution
+    maxParallelForks = Runtime.runtime.availableProcessors().intdiv(2) ?: 1
+}
+
+// Enable JaCoCo plugin
+apply plugin: 'jacoco'
+
+jacoco {
+    toolVersion = "${jacocoVersion}"
+}
+
+// Configure JaCoCo report
+jacocoTestReport {
+    dependsOn test
+
+    reports {
+        html.required = true
+    }
+}
+
+// Convenience task
+tasks.register('coverage') {
+    dependsOn test, jacocoTestReport
+    description = 'Run tests with coverage report'
+    group = 'verification'
+
+    doLast {
+        println "📊 Coverage report: build/reports/jacoco/test/html/index.html"
+    }
+}
