@@ -14,13 +14,13 @@ class PortalSearchBar extends HookConsumerWidget {
     final currentSearchQuery = ref.watch(searchQueryProvider);
 
     return Padding(
-      padding: const EdgeInsets.all(10.0),
+      padding: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 8.0),
       child: SearchBar(
         autoFocus: true,
         hintText: 'Search',
-        constraints: BoxConstraints(maxHeight: 70),
+        constraints: BoxConstraints(maxHeight: 44),
         leading: PortalIconButton(
-          padding: EdgeInsets.all(10),
+          padding: EdgeInsets.all(8),
           icon: Icon(LucideIcons.arrowLeft, size: 20),
           onTap: () {
             controller.clear();
@@ -35,7 +35,7 @@ class PortalSearchBar extends HookConsumerWidget {
         trailing: currentSearchQuery.isNotEmpty
             ? [
                 PortalIconButton(
-                  padding: EdgeInsets.all(10),
+                  padding: EdgeInsets.all(8),
                   icon: const Icon(LucideIcons.circleX, size: 20),
                   onTap: () {
                     controller.clear();

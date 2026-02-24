@@ -81,7 +81,7 @@ class ChatListScreen extends ConsumerWidget {
   ) {
     if (searchBarVisibility) {
       return const Padding(
-        padding: EdgeInsets.fromLTRB(16, 16, 16, 8),
+        padding: EdgeInsets.fromLTRB(12, 12, 12, 4),
         child: PortalSearchBar(),
       );
     }
