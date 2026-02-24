@@ -31,8 +31,8 @@ class ChatInputBox extends HookConsumerWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Container(
-          margin: const EdgeInsets.only(left: 8, right: 8, bottom: 8, top: 8),
-          padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
+          margin: const EdgeInsets.only(left: 6, right: 6, bottom: 6, top: 4),
+          padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 2),
           decoration: BoxDecoration(
             color: Theme.of(context).colorScheme.secondaryContainer,
             borderRadius: BorderRadius.circular(32),
@@ -41,13 +41,13 @@ class ChatInputBox extends HookConsumerWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               ShadButton.ghost(
-                width: 44,
-                height: 44,
+                width: 36,
+                height: 36,
                 padding: EdgeInsets.zero,
                 hoverBackgroundColor: Colors.transparent,
                 child: Icon(
                   emojiShowing.value ? LucideIcons.keyboard : LucideIcons.smile,
-                  size: 22,
+                  size: 20,
                   color: theme.colorScheme.primary,
                 ),
                 onPressed: () {
@@ -72,8 +72,8 @@ class ChatInputBox extends HookConsumerWidget {
                     secondaryFocusedBorder: ShadBorder.none,
                   ),
                   padding: const EdgeInsets.symmetric(
-                    horizontal: 8,
-                    vertical: 12,
+                    horizontal: 6,
+                    vertical: 8,
                   ),
                   onPressed: () => emojiShowing.value = false,
                   onSubmitted: (val) {
@@ -85,16 +85,16 @@ class ChatInputBox extends HookConsumerWidget {
                 ),
               ),
               ShadButton.ghost(
-                width: 44,
-                height: 44,
+                width: 36,
+                height: 36,
                 padding: EdgeInsets.zero,
                 hoverBackgroundColor: Colors.transparent,
-                child: const Icon(LucideIcons.paperclip, size: 22),
+                child: const Icon(LucideIcons.paperclip, size: 20),
                 onPressed: () {},
               ),
               ShadButton(
-                width: 44,
-                height: 44,
+                width: 36,
+                height: 36,
                 padding: EdgeInsets.zero,
                 decoration: ShadDecoration(
                   color: theme.colorScheme.primary,
@@ -104,7 +104,7 @@ class ChatInputBox extends HookConsumerWidget {
                   isInputTextEmpty.value
                       ? LucideIcons.mic
                       : LucideIcons.sendHorizontal,
-                  size: 20,
+                  size: 18,
                   color: theme.colorScheme.primaryForeground,
                 ),
                 onPressed: () {
