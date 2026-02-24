@@ -160,18 +160,18 @@ class _UserShimmer extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = ShadTheme.of(context);
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
       child: Row(
         children: [
           Container(
-            width: 52,
-            height: 52,
+            width: 40,
+            height: 40,
             decoration: BoxDecoration(
               color: theme.colorScheme.muted,
               shape: BoxShape.circle,
             ),
           ),
-          const SizedBox(width: 16),
+          const SizedBox(width: 10),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

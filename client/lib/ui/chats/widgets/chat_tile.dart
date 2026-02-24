@@ -17,7 +17,7 @@ class ChatTile extends ConsumerWidget {
     final isSelected = selectedUser?.name == user.name;
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 0),
       child: Material(
         color: isSelected
             ? theme.colorScheme.accent.withAlpha(50)
@@ -39,25 +39,25 @@ class ChatTile extends ConsumerWidget {
             }
           },
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
             child: Row(
               children: [
                 Stack(
                   children: [
                     ShadAvatar(
                       user.avatarUrl,
-                      size: const Size(52, 52),
+                      size: const Size(40, 40),
                       placeholder: const Icon(
                         LucideIcons.circleUserRound,
-                        size: 40,
+                        size: 28,
                       ),
                     ),
                     Positioned(
-                      bottom: 2,
-                      right: 2,
+                      bottom: 0,
+                      right: 0,
                       child: Container(
-                        width: 14,
-                        height: 14,
+                        width: 10,
+                        height: 10,
                         decoration: BoxDecoration(
                           color: theme.colorScheme.primary,
                           shape: BoxShape.circle,
@@ -70,7 +70,7 @@ class ChatTile extends ConsumerWidget {
                     ),
                   ],
                 ),
-                const SizedBox(width: 16),
+                const SizedBox(width: 10),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -85,16 +85,16 @@ class ChatTile extends ConsumerWidget {
                                 fontWeight: isSelected
                                     ? FontWeight.w700
                                     : FontWeight.w600,
-                                fontSize: 16,
+                                fontSize: 14,
                               ),
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                             ),
                           ),
-                          const SizedBox(width: 8),
+                          const SizedBox(width: 6),
                           Text(
                             user.time,
-                            style: theme.textTheme.muted.copyWith(fontSize: 12),
+                            style: theme.textTheme.muted.copyWith(fontSize: 10),
                           ),
                         ],
                       ),
