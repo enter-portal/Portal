@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:portal/ui/chats/screens/chats_screen.dart';
 // import 'package:portal/ui/stories/screens/stories_screen.dart';
@@ -20,15 +21,17 @@ class NavigationScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final selectedIndex = ref.watch(selectedNavigationIndexProvider);
+    final theme = ShadTheme.of(context);
 
     return ResponsiveLayout(
-      mobileLayout: _buildMobile(ref, selectedIndex),
-      desktopLayout: _buildDesktop(ref, selectedIndex),
+      mobileLayout: _buildMobile(ref, selectedIndex, theme),
+      desktopLayout: _buildDesktop(ref, selectedIndex, theme),
     );
   }
 
-  Widget _buildMobile(WidgetRef ref, int selectedIndex) {
+  Widget _buildMobile(WidgetRef ref, int selectedIndex, ShadThemeData theme) {
     return Scaffold(
+      backgroundColor: theme.colorScheme.background,
       body: _pages[selectedIndex],
       bottomNavigationBar: _pages.length > 1
           ? NavBar(
@@ -41,8 +44,9 @@ class NavigationScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildDesktop(WidgetRef ref, int selectedIndex) {
+  Widget _buildDesktop(WidgetRef ref, int selectedIndex, ShadThemeData theme) {
     return Scaffold(
+      backgroundColor: theme.colorScheme.background,
       body: Row(
         children: [
           if (_pages.length > 1)

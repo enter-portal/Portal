@@ -39,6 +39,7 @@ class AuthLayout extends StatelessWidget {
     return LoadingOverlay(
       isLoading: isLoading,
       child: Scaffold(
+        backgroundColor: theme.colorScheme.background,
         appBar: showBackButton ? AppBar() : null,
         body: SafeArea(
           child: isMobile ? _buildMobile(theme) : _buildDesktop(context, theme),

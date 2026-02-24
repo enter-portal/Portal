@@ -18,6 +18,7 @@ class ChatListScreen extends ConsumerWidget {
     final asyncUsers = ref.watch(chatListViewModelProvider);
 
     return Scaffold(
+      backgroundColor: theme.colorScheme.background,
       body: SafeArea(
         child: Column(
           children: [
@@ -67,7 +68,7 @@ class ChatListScreen extends ConsumerWidget {
         backgroundColor: theme.colorScheme.primary,
         foregroundColor: theme.colorScheme.primaryForeground,
         onPressed: () {},
-        child: const Icon(LucideIcons.messageCirclePlus, size: 28),
+        child: const Icon(LucideIcons.plus, size: 24),
       ),
     );
   }

@@ -85,6 +85,10 @@ class IndividualChatScreen extends ConsumerWidget {
     return AppBar(
       titleSpacing: 0,
       centerTitle: false,
+      automaticallyImplyLeading: false,
+      backgroundColor: Colors.transparent,
+      scrolledUnderElevation: 0,
+      elevation: 0,
       leading: Navigator.canPop(context)
           ? ShadButton.ghost(
               width: 44,
@@ -147,8 +151,6 @@ class IndividualChatScreen extends ConsumerWidget {
         const ChatPopupMenu(),
         const SizedBox(width: 8),
       ],
-      backgroundColor: theme.colorScheme.background.withAlpha(200),
-      elevation: 0,
     );
   }
 
