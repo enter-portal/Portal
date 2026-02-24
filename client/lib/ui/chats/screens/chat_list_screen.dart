@@ -62,13 +62,17 @@ class ChatListScreen extends ConsumerWidget {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        elevation: 4,
-        highlightElevation: 8,
-        backgroundColor: theme.colorScheme.primary,
-        foregroundColor: theme.colorScheme.primaryForeground,
-        onPressed: () {},
-        child: const Icon(LucideIcons.plus, size: 24),
+      floatingActionButton: SizedBox(
+        width: 44,
+        height: 44,
+        child: FloatingActionButton(
+          elevation: 4,
+          highlightElevation: 8,
+          backgroundColor: theme.colorScheme.primary,
+          foregroundColor: theme.colorScheme.primaryForeground,
+          onPressed: () {},
+          child: const Icon(LucideIcons.plus, size: 20),
+        ),
       ),
     );
   }
@@ -94,13 +98,13 @@ class ChatListScreen extends ConsumerWidget {
       elevation: 0,
       actions: [
         ShadButton.ghost(
-          width: 44,
-          height: 44,
+          width: 36,
+          height: 36,
           padding: EdgeInsets.zero,
           hoverBackgroundColor: Colors.transparent,
           onPressed: () =>
               ref.read(searchBarVisibilityProvider.notifier).show(),
-          child: const Icon(LucideIcons.search, size: 22),
+          child: const Icon(LucideIcons.search, size: 20),
         ),
         const ChatPopupMenu(),
       ],

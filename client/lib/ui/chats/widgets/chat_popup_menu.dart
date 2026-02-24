@@ -13,39 +13,46 @@ class ChatPopupMenu extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return PopupMenuButton<ChatMenuAction>(
-      onSelected: (ChatMenuAction item) {
-        switch (item) {
-          case ChatMenuAction.newGroup:
-            appLogger.d('ChatMenu: New Group selected');
-            break;
-          case ChatMenuAction.contacts:
-            appLogger.d('ChatMenu: Contacts selected');
-            break;
-          case ChatMenuAction.logout:
-            _showLogoutDialog(context, ref);
-            break;
-        }
-      },
-      itemBuilder: (BuildContext context) => <PopupMenuEntry<ChatMenuAction>>[
-        const PopupMenuItem<ChatMenuAction>(
-          value: ChatMenuAction.newGroup,
-          child: Text('New group'),
-        ),
-        const PopupMenuItem<ChatMenuAction>(
-          value: ChatMenuAction.contacts,
-          child: Text('Contacts'),
-        ),
-        const PopupMenuItem<ChatMenuAction>(
-          value: ChatMenuAction.logout,
-          child: Text('Logout'),
-        ),
-      ],
-      offset: Offset(0, 40),
+    return Theme(
+      data: Theme.of(context).copyWith(
+        hoverColor: Colors.transparent,
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
+      ),
+      child: PopupMenuButton<ChatMenuAction>(
+        onSelected: (ChatMenuAction item) {
+          switch (item) {
+            case ChatMenuAction.newGroup:
+              appLogger.d('ChatMenu: New Group selected');
+              break;
+            case ChatMenuAction.contacts:
+              appLogger.d('ChatMenu: Contacts selected');
+              break;
+            case ChatMenuAction.logout:
+              _showLogoutDialog(context, ref);
+              break;
+          }
+        },
+        itemBuilder: (BuildContext context) => <PopupMenuEntry<ChatMenuAction>>[
+          const PopupMenuItem<ChatMenuAction>(
+            value: ChatMenuAction.newGroup,
+            child: Text('New group'),
+          ),
+          const PopupMenuItem<ChatMenuAction>(
+            value: ChatMenuAction.contacts,
+            child: Text('Contacts'),
+          ),
+          const PopupMenuItem<ChatMenuAction>(
+            value: ChatMenuAction.logout,
+            child: Text('Logout'),
+          ),
+        ],
+        offset: const Offset(0, 40),
 
-      child: const Padding(
-        padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 20.0),
-        child: Icon(LucideIcons.ellipsisVertical, size: 22),
+        child: const Padding(
+          padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 12.0),
+          child: Icon(LucideIcons.ellipsisVertical, size: 20),
+        ),
       ),
     );
   }

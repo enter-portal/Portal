@@ -94,6 +94,7 @@ class IndividualChatScreen extends ConsumerWidget {
               width: 44,
               height: 44,
               padding: EdgeInsets.zero,
+              hoverBackgroundColor: Colors.transparent,
               child: const Icon(LucideIcons.chevronLeft, size: 24),
               onPressed: () => Navigator.pop(context),
             )
